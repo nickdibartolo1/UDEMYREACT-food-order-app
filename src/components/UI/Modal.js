@@ -7,12 +7,11 @@ import ReactDOM from 'react-dom';
 // Backdrop component
 const Backdrop = (props) => {
     return (
-        <div className={classes.backdrop}>
+        <div className={classes.backdrop} onClick={props.onCloseCart}>
 
         </div>
     )
 }
-
 
 
 // Overlay component
@@ -37,11 +36,11 @@ const portalElement = document.getElementById('overlays');
 const Modal = (props) => {
 
 
-    
+
     return (
         <Fragment>
-          {ReactDOM.createPortal(<Backdrop/>, portalElement)}
-          {ReactDOM.createPortal(<Overlay>{props.children}</Overlay>, portalElement)}
+            {ReactDOM.createPortal(<Backdrop onCloseCart={props.onCloseCart} />, portalElement)}
+            {ReactDOM.createPortal(<Overlay>{props.children}</Overlay>, portalElement)}
         </Fragment>
     )
 }
